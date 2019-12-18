@@ -1,0 +1,39 @@
+{
+    "name": "satheez/php-helper-functions",
+    "description": "Useful PHP helper functions",
+    "keywords": [
+        "php",
+        "helper",
+        "function",
+        "validation",
+        "generator",
+        "convector",
+        "utilities",
+        "faker functions"
+    ],
+    "type": "library",
+    "version": "0.0.1",
+    "require": {
+        "php": ">=7.0",
+        "fzaninotto/faker": "^1.9",
+        "ext-json": "*",
+        "ext-mbstring": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5"
+    },
+    "autoload": {
+        "psr-4": { },
+        "classmap": [
+            "src/classes"
+        ],
+        "files": [ ]
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vettivel Satheez",
+            "email": "isatheez@gmail.com"
+        }
+    ]
+}
