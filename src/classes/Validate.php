@@ -64,8 +64,6 @@ class Validate {
      */
     public static function isStringWithRangeExcludeSpace(string $str, int $minLength = 0, ?int $maxLength = null): bool
     {
-        var_dump($str, trim($str));
-        die('aa');
         return self::isStringWithRange(trim($str), $minLength, $maxLength);
     }
 
@@ -79,7 +77,12 @@ class Validate {
      */
     public static function isValidInt($val, bool $allowNegativeValue = true): bool
     {
-        return filter_var($val, FILTER_VALIDATE_INT);
+        if (! filter_var($val, FILTER_VALIDATE_INT) ) {
+            return false;
+        }
+
+        return $allowNegativeValue?  true : $val >= 0;
+
     }
 
     /**
@@ -182,7 +185,7 @@ class Validate {
      */
     public static function isPastDate($date, ?int $now = 0, string $format = 'Y-m-d'): bool
     {
-        if ( !self::isValidDate($date) ) {
+        if ( !self::isValidDate($date, $format) ) {
             return false;
         }
         if ( empty($now) ) {
@@ -192,7 +195,6 @@ class Validate {
         $d = \DateTime::createFromFormat($format, $date);
 
         return $d->getTimestamp() < $now;
-
     }
 
     /**
@@ -206,7 +208,7 @@ class Validate {
      */
     public static function isFutureDate($date, ?int $now = 0, string $format = 'Y-m-d'): bool
     {
-        if ( !self::isValidDateTime($date, $format) ) {
+        if ( !self::isValidDate($date, $format) ) {
             return false;
         }
         if ( empty($now) ) {

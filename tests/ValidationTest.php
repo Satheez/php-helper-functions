@@ -56,7 +56,7 @@ class ValidationTest extends TestCase {
     /** @test */
     public function it_validates_the_integer_validation_function()
     {
-        $validInt = [123, '777', '11145555666', 896555, 4756111111];
+        $validInt = [123, '777', '11145555666', 896555, 4756111111, -11];
         foreach ( $validInt as $int ) {
             $this->assertTrue(Validate::isValidInt($int));
         }
@@ -65,6 +65,7 @@ class ValidationTest extends TestCase {
         foreach ( $invalidInt as $int ) {
             $this->assertFalse(Validate::isValidInt($int));
         }
+        $this->assertFalse(Validate::isValidInt(-11, false));
     }
 
     /** @test */
@@ -115,10 +116,41 @@ class ValidationTest extends TestCase {
         $this->assertTrue(Validate::isValidDate(date('Y-m-d'), 'Y-m-d'));
 
         $this->assertFalse(Validate::isValidDate('test date'));
-        $this->assertFalse(Validate::isValidDate(date('Y-m-d H:i:s'), 'Y-m-d h:i:s'));
+        $this->assertFalse(Validate::isValidDate(date('Y-m-d H:i:s'), 'Y/m-d h:i:s'));
         $this->assertFalse(Validate::isValidDate(date('Y/m/d'), 'Y-m-d'));
+
+         }
+
+
+    /** @test */
+    public function it_validates_the_past_date_validation_function()
+    {
+        $this->assertTrue(Validate::isPastDate(date('Y-m-d', strtotime('-1 day'))));
+        $this->assertTrue(Validate::isPastDate(date('Y-m-d', strtotime('-1 day')), 0, 'Y-m-d'));
+        $this->assertTrue(Validate::isPastDate(date('Y-m-d'), strtotime('+1 day'), 'Y-m-d'));
+        $this->assertTrue(Validate::isPastDate(date('Y-m-d H:i:s', strtotime('-1 day')), 0, 'Y-m-d H:i:s'));
+
+        $this->assertFalse(Validate::isPastDate(date('Y-m-d', strtotime('+1 day'))));
+        $this->assertFalse(Validate::isPastDate(date('Y-m-d', strtotime('+1 day')), 0, 'Y-m-d'));
+        $this->assertFalse(Validate::isPastDate(date('Y-m-d'), strtotime('-1 day'), 'Y-m-d'));
+        $this->assertFalse(Validate::isPastDate(date('Y-m-d', strtotime('+1 day'))));
+        $this->assertFalse(Validate::isPastDate(date('Y-m-d H:i:s', strtotime('+1 day')), 0, 'Y-m-d H:i:s'));
     }
 
+    /** @test */
+    public function it_validates_the_future_date_validation_function()
+    {
+        $this->assertTrue(Validate::isFutureDate(date('Y-m-d', strtotime('+1 day'))));
+        $this->assertTrue(Validate::isFutureDate(date('Y-m-d', strtotime('+1 day')), 0, 'Y-m-d'));
+        $this->assertTrue(Validate::isFutureDate(date('Y-m-d'), strtotime('-1 day'), 'Y-m-d'));
+        $this->assertTrue(Validate::isFutureDate(date('Y-m-d', strtotime('+1 day'))));
+        $this->assertTrue(Validate::isFutureDate(date('Y-m-d H:i:s', strtotime('+1 day')), 0, 'Y-m-d H:i:s'));
+
+        $this->assertFalse(Validate::isFutureDate(date('Y-m-d', strtotime('-1 day'))));
+        $this->assertFalse(Validate::isFutureDate(date('Y-m-d', strtotime('-1 day')), 0, 'Y-m-d'));
+        $this->assertFalse(Validate::isFutureDate(date('Y-m-d'), strtotime('+1 day'), 'Y-m-d'));
+        $this->assertFalse(Validate::isFutureDate(date('Y-m-d H:i:s', strtotime('-1 day')), 0, 'Y-m-d H:i:s'));
+    }
 
     /** @test */
     public function it_validates_the_email_validation_function()
@@ -133,6 +165,22 @@ class ValidationTest extends TestCase {
 
         foreach ( $invalidEmails as $email ) {
             $this->assertFalse(Validate::isValidEmail($email));
+        }
+    }
+
+
+    /** @test */
+    public function it_validates_the_url_validation_function()
+    {
+        $validURLs = ['https://example.com', 'https://sub.example.com', 'https://www.example.com',];
+
+        foreach ( $validURLs as $url ) {
+            $this->assertTrue(Validate::isValidURL($url));
+        }
+
+        $invalidURLs = ['example.', 'test#example.org', '@example.org', 'example.org.a.n.c'];
+        foreach ( $invalidURLs as $url ) {
+            $this->assertFalse(Validate::isValidURL($url));
         }
     }
 
