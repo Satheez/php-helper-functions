@@ -12,9 +12,9 @@
         "faker functions"
     ],
     "type": "library",
-    "version": "0.0.1",
+    "version": "1.0",
     "require": {
-        "php": ">=7.0",
+        "php": "^7.3",
         "fzaninotto/faker": "^1.9",
         "ext-json": "*",
         "ext-mbstring": "*"
