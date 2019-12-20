@@ -9,8 +9,6 @@
 
 namespace Sa\Helper;
 
-use phpDocumentor\Reflection\Types\String_;
-
 class Str {
 
     /**
@@ -76,7 +74,7 @@ class Str {
         if ( strlen($str) <= $limit ) {
             return $str;
         }
-        return self::substr($str, 0, $limit - 3) . $end;
+        return self::substr($str, 0, $limit) . $end;
     }
 
     /**
@@ -89,6 +87,18 @@ class Str {
     public static function camel(string $str): string
     {
         return ucwords(self::lower($str));
+    }
+
+    /**
+     * Generate random string
+     *
+     * @param int $limit
+     *
+     * @return string
+     */
+    public static function random(int $limit = 10): string
+    {
+        return Generate::randomString($limit);
     }
 
 }

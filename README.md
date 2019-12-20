@@ -2,7 +2,7 @@
 
 The library `satheez/php-helper-functions`  is a collection of useful php helper functions.  
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/satheez/php-helper-functions)](https://packagist.org/packages/phpunit/phpunit)
+[![Latest Stable Version](https://img.shields.io/packagist/v/satheez/php-helper-functions)](https://packagist.org/packages/satheez/php-helper-functions)
 [![Minimum PHP Version](https://img.shields.io/packagist/php-v/satheez/php-helper-functions)](https://php.net/)
 [![Build Status](https://travis-ci.org/satheez/php-helper-functions.svg?branch=master)](https://travis-ci.org/satheez/php-helper-functions)
 [![License](https://poser.pugx.org/satheez/php-helper-functions/license)](https://packagist.org/packages/satheez/php-helper-functions)

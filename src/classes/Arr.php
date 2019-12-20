@@ -1,4 +1,11 @@
 <?php
+/**
+ * Helper class that provides useful php functions.
+ *
+ * @author      Vettivel Satheez <isatheez@gmail.com>
+ * @link        https://github.com/satheez
+ * @license     MIT
+ */
 
 namespace Sa\Helper;
 
@@ -13,7 +20,7 @@ class Arr {
      *
      * @return array
      */
-    public static function add(array $arr, $value, ?string $key = null)
+    public static function add(array $arr, string $key, $value)
     {
         if ( !empty($key) ) {
             $arr[$key] = $value;
@@ -48,7 +55,7 @@ class Arr {
      */
     public static function first(array $arr, $default = null)
     {
-        $firstIndex = count($arr) - 1;
+        $firstIndex = 0;
         return self::nthElement($arr, $firstIndex, $default);
     }
 
@@ -87,10 +94,17 @@ class Arr {
      * @param array $arr
      *
      * @return void
+     * @see https://stackoverflow.com/questions/4102777/php-random-shuffle-array-maintaining-key-value
      */
     public static function shuffle(array &$arr): void
     {
-        shuffle($arr);
+        $keys = array_keys($arr);
+        shuffle($keys);
+        $random = [];
+        foreach ( $keys as $key ) {
+            $random[$key] = $arr[$key];
+        }
+        $arr = $random;
     }
 
     /**

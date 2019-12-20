@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c1ad8ba6ea0885e03c0cf9077054b071",
+    "content-hash": "19e6f9f98fd44584c706cf8fd43d5c63",
     "packages": [
         {
             "name": "fzaninotto/faker",
@@ -1580,7 +1580,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.0",
+        "php": "^7.2",
         "ext-json": "*",
         "ext-mbstring": "*"
     },

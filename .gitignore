@@ -2,3 +2,4 @@
 /.phpintel/
 /.vscode/
 /.idea/
+.phpunit.result.cache

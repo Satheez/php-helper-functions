@@ -6,21 +6,19 @@
         "helper",
         "function",
         "validation",
-        "generator",
         "convector",
-        "utilities",
         "faker functions"
     ],
     "type": "library",
-    "version": "1.0",
+    "version": "0.0.1",
     "require": {
-        "php": "^7.3",
+        "php": "^7.2",
         "fzaninotto/faker": "^1.9",
         "ext-json": "*",
         "ext-mbstring": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.5"
+        "phpunit/phpunit": "^7.0"
     },
     "autoload": {
         "psr-4": { },
@@ -35,5 +33,6 @@
             "name": "Vettivel Satheez",
             "email": "isatheez@gmail.com"
         }
-    ]
+    ],
+    "prefer-stable": true
 }
