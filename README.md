@@ -8,7 +8,7 @@ The library `satheez/php-helper-functions`  is a collection of useful php helper
 [![License](https://poser.pugx.org/satheez/php-helper-functions/license)](https://packagist.org/packages/satheez/php-helper-functions)
 
 #### Installation
-```bash
+```bash~~~~
 composer require satheez/php-helper-functions
 ```
 
