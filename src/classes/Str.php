@@ -3,14 +3,16 @@
  * Helper class that provides useful php functions.
  *
  * @author      Vettivel Satheez <isatheez@gmail.com>
+ *
  * @link        https://github.com/satheez
+ *
  * @license     MIT
  */
 
 namespace Sa\Helper;
 
-class Str {
-
+class Str
+{
     /**
      * Convert the given string to title case.
      *
@@ -22,7 +24,6 @@ class Str {
     {
         return mb_convert_case($value, MB_CASE_TITLE, 'UTF-8');
     }
-
 
     /**
      * Convert the given string to upper-case.
@@ -71,14 +72,15 @@ class Str {
      */
     public static function limit(string $str, int $limit = 30, string $end = '...'): string
     {
-        if ( strlen($str) <= $limit ) {
+        if (strlen($str) <= $limit) {
             return $str;
         }
-        return self::substr($str, 0, $limit) . $end;
+
+        return self::substr($str, 0, $limit).$end;
     }
 
     /**
-     * Upper case for each word start letters
+     * Upper case for each word start letters.
      *
      * @param string $str
      *
@@ -90,7 +92,7 @@ class Str {
     }
 
     /**
-     * Generate random string
+     * Generate random string.
      *
      * @param int $limit
      *
@@ -100,5 +102,4 @@ class Str {
     {
         return Generate::randomString($limit);
     }
-
 }

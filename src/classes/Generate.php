@@ -3,17 +3,18 @@
  * Helper class that provides useful php functions.
  *
  * @author      Vettivel Satheez <isatheez@gmail.com>
+ *
  * @link        https://github.com/satheez
+ *
  * @license     MIT
  */
 
 namespace Sa\Helper;
 
-
-class Generate {
-
+class Generate
+{
     /**
-     * Generate random int
+     * Generate random int.
      *
      * @param int $minValue
      * @param int $maxValue
@@ -26,7 +27,7 @@ class Generate {
     }
 
     /**
-     * Generate random float
+     * Generate random float.
      *
      * @param float $minValue
      * @param float $maxValue
@@ -46,7 +47,7 @@ class Generate {
     }
 
     /**
-     * Generate random string
+     * Generate random string.
      *
      * @param int  $length
      * @param bool $includeNumbers
@@ -56,25 +57,23 @@ class Generate {
      */
     public static function randomString(int $length = 10, bool $includeNumbers = true, bool $includeSymbols = false): string
     {
-        $range = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $range = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
         // Include numbers
-        if ( $includeNumbers ) {
-
-            $range .= "0123456789";
+        if ($includeNumbers) {
+            $range .= '0123456789';
         }
 
         // Include symbols
-        if ( $includeSymbols ) {
-
-            $range .= "_!@#$^~";
+        if ($includeSymbols) {
+            $range .= '_!@#$^~';
         }
 
-        $finalString = "";
+        $finalString = '';
 
         $srtLen = strlen($range);
 
-        for ( $i = 0; $i < $length; $i++ ) {
+        for ($i = 0; $i < $length; $i++) {
             $randomIndex = rand(0, $srtLen - 1);
 
             $finalString .= $range[$randomIndex];
@@ -82,5 +81,4 @@ class Generate {
 
         return $finalString;
     }
-
 }

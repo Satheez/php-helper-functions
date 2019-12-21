@@ -3,8 +3,8 @@
 use PHPUnit\Framework\TestCase;
 use Sa\Helper\Arr;
 
-class ArrayTest extends TestCase {
-
+class ArrayTest extends TestCase
+{
     protected $array;
     protected $array2;
 
@@ -34,7 +34,6 @@ class ArrayTest extends TestCase {
     {
         $this->assertEquals(Arr::getKeyByValue($this->array, 'dog'), 'd');
     }
-
 
     /** @test */
     public function it_validates_the_array_first_function()
@@ -115,7 +114,7 @@ class ArrayTest extends TestCase {
         unset($array['c']);
         $array['e'] = 'elephant';
 
-        $this->assertEquals(Arr::difference($this->array, $array), ['a' => 'apple', 'c' => 'cat',]);
+        $this->assertEquals(Arr::difference($this->array, $array), ['a' => 'apple', 'c' => 'cat']);
         $this->assertEquals(Arr::difference($array, $this->array), ['e' => 'elephant']);
     }
 
@@ -123,14 +122,14 @@ class ArrayTest extends TestCase {
     public function it_validates_the_array_merge_function()
     {
         $this->assertEquals(Arr::merge($this->array, ['e' => 'elephant']), ['a' => 'apple', 'b' => 'ball', 'c' => 'cat', 'd' => 'dog', 'e' => 'elephant']);
-        $this->assertEquals(Arr::merge($this->array, $this->array2), ['a' => 'apple', 'b' => 'ball', 'c' => 'cat', 'd' => 'dog', 'z' => 'ken', 'foo' => 'bar', 'x' => 'max',]);
+        $this->assertEquals(Arr::merge($this->array, $this->array2), ['a' => 'apple', 'b' => 'ball', 'c' => 'cat', 'd' => 'dog', 'z' => 'ken', 'foo' => 'bar', 'x' => 'max']);
     }
 
     /** @test */
     public function it_validates_the_array_sort_by_value_ascending_order_function()
     {
         Arr::sortByValue($this->array2);
-        $expected = ['a' => 'apple', 'b' => 'ball', 'foo' => 'bar', 'c' => 'cat', 'd' => 'dog', 'z' => 'ken', 'x' => 'max',];
+        $expected = ['a' => 'apple', 'b' => 'ball', 'foo' => 'bar', 'c' => 'cat', 'd' => 'dog', 'z' => 'ken', 'x' => 'max'];
         $this->assertEquals($this->array2, $expected);
         $this->assertEquals(Arr::first($this->array2), Arr::first($expected));
         $this->assertEquals(Arr::last($this->array2), Arr::last($expected));
@@ -140,7 +139,7 @@ class ArrayTest extends TestCase {
     public function it_validates_the_array_sort_by_value_descending_order_function()
     {
         Arr::sortByValue($this->array2, false);
-        $expected = ['a' => 'apple', 'b' => 'ball', 'foo' => 'bar', 'c' => 'cat', 'd' => 'dog', 'z' => 'ken', 'x' => 'max',];
+        $expected = ['a' => 'apple', 'b' => 'ball', 'foo' => 'bar', 'c' => 'cat', 'd' => 'dog', 'z' => 'ken', 'x' => 'max'];
         Arr::reverse($expected);
 
         $this->assertEquals($this->array2, $expected);
@@ -152,7 +151,7 @@ class ArrayTest extends TestCase {
     public function it_validates_the_array_sort_by_key_ascending_order_function()
     {
         Arr::sortByKey($this->array2);
-        $expected = ['a' => 'apple', 'b' => 'ball', 'c' => 'cat', 'd' => 'dog', 'foo' => 'bar', 'x' => 'max', 'z' => 'ken',];
+        $expected = ['a' => 'apple', 'b' => 'ball', 'c' => 'cat', 'd' => 'dog', 'foo' => 'bar', 'x' => 'max', 'z' => 'ken'];
         //        Arr::reverse($expected);
 
         $this->assertEquals($this->array2, $expected);
@@ -164,7 +163,7 @@ class ArrayTest extends TestCase {
     public function it_validates_the_array_sort_by_key_descending_order_function()
     {
         Arr::sortByKey($this->array2, false);
-        $expected = ['a' => 'apple', 'b' => 'ball', 'c' => 'cat', 'd' => 'dog', 'foo' => 'bar', 'x' => 'max', 'z' => 'ken',];
+        $expected = ['a' => 'apple', 'b' => 'ball', 'c' => 'cat', 'd' => 'dog', 'foo' => 'bar', 'x' => 'max', 'z' => 'ken'];
         Arr::reverse($expected);
 
         $this->assertEquals($this->array2, $expected);
@@ -198,9 +197,8 @@ class ArrayTest extends TestCase {
     /** @test */
     public function it_validates_the_array_to_object_function()
     {
-        $object =   Arr::toObject($this->array2);
+        $object = Arr::toObject($this->array2);
         $this->assertTrue(is_object($object));
         $this->assertEquals($object->foo, $this->array2['foo']);
     }
-
 }

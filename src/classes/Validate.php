@@ -3,16 +3,18 @@
  * Helper class that provides useful php functions.
  *
  * @author      Vettivel Satheez <isatheez@gmail.com>
+ *
  * @link        https://github.com/satheez
+ *
  * @license     MIT
  */
 
 namespace Sa\Helper;
 
-class Validate {
-
+class Validate
+{
     /**
-     * Check whether the given value is a type of 'string' or not
+     * Check whether the given value is a type of 'string' or not.
      *
      * @param $str
      *
@@ -24,7 +26,7 @@ class Validate {
     }
 
     /**
-     * Check whether the string is empty or not
+     * Check whether the string is empty or not.
      *
      * @param $str
      *
@@ -32,14 +34,15 @@ class Validate {
      */
     public static function isEmptyString($str): bool
     {
-        if ( empty($str) || !self::isValidString($str) ) {
+        if (empty($str) || !self::isValidString($str)) {
             return true;
         }
-        return (strlen(trim($str)) === 0);
+
+        return strlen(trim($str)) === 0;
     }
 
     /**
-     * Check whether the given string value length b/w given range
+     * Check whether the given string value length b/w given range.
      *
      * @param          $str
      * @param int      $minLength
@@ -49,11 +52,11 @@ class Validate {
      */
     public static function isStringWithRange($str, int $minLength = 0, ?int $maxLength = null): bool
     {
-        if ( !empty($minLength) && strlen($str) < $minLength ) {
+        if (!empty($minLength) && strlen($str) < $minLength) {
             return false;
         }
 
-        if ( !empty($maxLength) && strlen($str) > $maxLength ) {
+        if (!empty($maxLength) && strlen($str) > $maxLength) {
             return false;
         }
 
@@ -61,7 +64,7 @@ class Validate {
     }
 
     /**
-     * validate string without space (by excluding space)
+     * validate string without space (by excluding space).
      *
      * @param          $str
      * @param int      $minLength
@@ -75,7 +78,7 @@ class Validate {
     }
 
     /**
-     * Validate int value
+     * Validate int value.
      *
      * @param      $val
      * @param bool $allowNegativeValue
@@ -84,16 +87,15 @@ class Validate {
      */
     public static function isValidInt($val, bool $allowNegativeValue = true): bool
     {
-        if (! filter_var($val, FILTER_VALIDATE_INT) ) {
+        if (!filter_var($val, FILTER_VALIDATE_INT)) {
             return false;
         }
 
-        return $allowNegativeValue?  true : $val >= 0;
-
+        return $allowNegativeValue ? true : $val >= 0;
     }
 
     /**
-     * Validate int value with range
+     * Validate int value with range.
      *
      * @param          $val
      * @param int|null $minLength
@@ -103,26 +105,25 @@ class Validate {
      */
     public static function intWithRange($val, ?int $minLength = null, ?int $maxLength = null)
     {
-        if ( !self::isValidInt($val) ) {
+        if (!self::isValidInt($val)) {
             return false;
         }
 
         $val = intval($val);
 
-        if ( !is_null($minLength) && $val < $minLength ) {
+        if (!is_null($minLength) && $val < $minLength) {
             return false;
         }
 
-        if ( !is_null($maxLength) && $val > $maxLength ) {
+        if (!is_null($maxLength) && $val > $maxLength) {
             return false;
         }
 
         return true;
-
     }
 
     /**
-     * Validate float value
+     * Validate float value.
      *
      * @param      $val
      * @param bool $allowNegativeValue
@@ -135,7 +136,7 @@ class Validate {
     }
 
     /**
-     * Validate float value with range
+     * Validate float value with range.
      *
      * @param            $val
      * @param float|null $minValue
@@ -145,17 +146,17 @@ class Validate {
      */
     public static function floatWithRange($val, ?float $minValue = null, ?float $maxValue = null)
     {
-        if ( !self::isValidFloat($val) ) {
+        if (!self::isValidFloat($val)) {
             return false;
         }
 
         $val = floatval($val);
 
-        if ( !is_null($minValue) && $val < $minValue ) {
+        if (!is_null($minValue) && $val < $minValue) {
             return false;
         }
 
-        if ( !is_null($maxValue) && $val > $maxValue ) {
+        if (!is_null($maxValue) && $val > $maxValue) {
             return false;
         }
 
@@ -163,7 +164,7 @@ class Validate {
     }
 
     /**
-     * Validate datetime
+     * Validate datetime.
      *
      * @param        $givenValue
      * @param string $format
@@ -172,17 +173,17 @@ class Validate {
      */
     public static function isValidDate($givenValue, string $format = 'Y-m-d H:i:s')
     {
-        if ( self::isEmptyString($givenValue) ) {
+        if (self::isEmptyString($givenValue)) {
             return false;
         }
 
         $generatedDateValue = \DateTime::createFromFormat($format, $givenValue);
 
-        return $generatedDateValue && $generatedDateValue->format($format) === $givenValue && \DateTime::getLastErrors()["warning_count"] == 0 && \DateTime::getLastErrors()["error_count"] == 0;
+        return $generatedDateValue && $generatedDateValue->format($format) === $givenValue && \DateTime::getLastErrors()['warning_count'] == 0 && \DateTime::getLastErrors()['error_count'] == 0;
     }
 
     /**
-     * Check whether given date is in the past or not
+     * Check whether given date is in the past or not.
      *
      * @param          $date
      * @param int|null $now
@@ -192,10 +193,10 @@ class Validate {
      */
     public static function isPastDate($date, ?int $now = 0, string $format = 'Y-m-d'): bool
     {
-        if ( !self::isValidDate($date, $format) ) {
+        if (!self::isValidDate($date, $format)) {
             return false;
         }
-        if ( empty($now) ) {
+        if (empty($now)) {
             $now = time();
         }
 
@@ -205,7 +206,7 @@ class Validate {
     }
 
     /**
-     * Check given date is in the future or not
+     * Check given date is in the future or not.
      *
      * @param          $date
      * @param int|null $now
@@ -215,21 +216,20 @@ class Validate {
      */
     public static function isFutureDate($date, ?int $now = 0, string $format = 'Y-m-d'): bool
     {
-        if ( !self::isValidDate($date, $format) ) {
+        if (!self::isValidDate($date, $format)) {
             return false;
         }
-        if ( empty($now) ) {
+        if (empty($now)) {
             $now = time();
         }
 
         $d = \DateTime::createFromFormat($format, $date);
 
         return $d->getTimestamp() > $now;
-
     }
 
     /**
-     * Validate email
+     * Validate email.
      *
      * @param string $email
      *
@@ -241,7 +241,7 @@ class Validate {
     }
 
     /**
-     * Validate url
+     * Validate url.
      *
      * @param string $url
      *
@@ -253,7 +253,7 @@ class Validate {
     }
 
     /**
-     * validate IP address
+     * validate IP address.
      *
      * @param string $ip
      *
@@ -263,5 +263,4 @@ class Validate {
     {
         return filter_var($ip, FILTER_VALIDATE_IP);
     }
-
 }
