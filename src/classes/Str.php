@@ -13,7 +13,6 @@ namespace Sa\Helper;
 
 class Str
 {
-
     /**
      * Convert the given string to title case..
      *
@@ -25,7 +24,6 @@ class Str
     {
         return mb_convert_case($value, MB_CASE_TITLE, 'UTF-8');
     }
-
 
     /**
      * Convert the given string to upper-case..
@@ -66,7 +64,7 @@ class Str
     }
 
     /**
-     * @param string $str .
+     * @param string $str   .
      * @param int    $limit
      * @param string $end
      *
@@ -77,7 +75,8 @@ class Str
         if (strlen($str) <= $limit) {
             return $str;
         }
-        return self::substr($str, 0, $limit) . $end;
+
+        return self::substr($str, 0, $limit).$end;
     }
 
     /**

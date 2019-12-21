@@ -13,7 +13,6 @@ namespace Sa\Helper;
 
 class Arr
 {
-
     /**
      * Add new element to the array.
      *
@@ -74,6 +73,7 @@ class Arr
     public static function last(array $arr, $default = null)
     {
         $lastIndex = count($arr) - 1;
+
         return self::nthElement($arr, $lastIndex, $default);
     }
 
@@ -99,6 +99,7 @@ class Arr
      * @param array $arr
      *
      * @return void
+     *
      * @see https://stackoverflow.com/questions/4102777/php-random-shuffle-array-maintaining-key-value
      */
     public static function shuffle(array &$arr): void
@@ -135,6 +136,7 @@ class Arr
     public static function random(array $arr)
     {
         $randomIndex = rand(0, (count($arr) - 1));
+
         return self::nthElement($arr, $randomIndex);
     }
 
@@ -175,7 +177,6 @@ class Arr
     public static function difference(array $arr1, array $arr2)
     {
         return array_diff($arr1, $arr2);
-
     }
 
     /**
@@ -291,6 +292,7 @@ class Arr
      * @param       $value
      *
      * @return mixed
+     *
      * @see https://stackoverflow.com/questions/7225070/php-array-delete-by-value-not-key?rq=1
      */
     public static function getKeyByValue(array $arr, $value)
@@ -298,7 +300,6 @@ class Arr
         if (($key = array_search($value, $arr)) !== false) {
             return $key;
         }
-        return null;
     }
 
     /**
@@ -311,6 +312,7 @@ class Arr
     public static function toObject($array)
     {
         $result = json_decode(json_encode($array), false);
+
         return is_object($result) ? $result : null;
     }
 }
