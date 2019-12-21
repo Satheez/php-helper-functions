@@ -10,7 +10,6 @@
         "faker functions"
     ],
     "type": "library",
-    "version": "0.0.1",
     "require": {
         "php": "^7.2",
         "fzaninotto/faker": "^1.9",
@@ -24,8 +23,7 @@
         "psr-4": { },
         "classmap": [
             "src/classes"
-        ],
-        "files": [ ]
+        ]
     },
     "license": "MIT",
     "authors": [
