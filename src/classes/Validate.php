@@ -3,7 +3,9 @@
  * Helper class that provides useful php functions.
  *
  * @author      Vettivel Satheez <isatheez@gmail.com>
+ *
  * @link        https://github.com/satheez
+ *
  * @license     MIT
  */
 
@@ -107,13 +109,13 @@ class Validate {
             return false;
         }
 
-        $val = intval($val);
+        $val = (int) $val;
 
-        if ( !is_null($minLength) && $val < $minLength ) {
+        if ( $minLength !== null && $val < $minLength ) {
             return false;
         }
 
-        if ( !is_null($maxLength) && $val > $maxLength ) {
+        if ( $maxLength !== null && $val > $maxLength ) {
             return false;
         }
 
@@ -151,11 +153,11 @@ class Validate {
 
         $val = floatval($val);
 
-        if ( !is_null($minValue) && $val < $minValue ) {
+        if ( $minValue!== null && $val < $minValue ) {
             return false;
         }
 
-        if ( !is_null($maxValue) && $val > $maxValue ) {
+        if ( $maxValue!== null && $val > $maxValue ) {
             return false;
         }
 

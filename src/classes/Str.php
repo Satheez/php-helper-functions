@@ -3,16 +3,19 @@
  * Helper class that provides useful php functions.
  *
  * @author      Vettivel Satheez <isatheez@gmail.com>
+ *
  * @link        https://github.com/satheez
+ *
  * @license     MIT
  */
 
 namespace Sa\Helper;
 
-class Str {
+class Str
+{
 
     /**
-     * Convert the given string to title case.
+     * Convert the given string to title case..
      *
      * @param string $value
      *
@@ -25,7 +28,7 @@ class Str {
 
 
     /**
-     * Convert the given string to upper-case.
+     * Convert the given string to upper-case..
      *
      * @param string $value
      *
@@ -37,7 +40,7 @@ class Str {
     }
 
     /**
-     * Convert the given string to upper-case.
+     * Convert the given string to upper-case..
      *
      * @param string $value
      *
@@ -49,7 +52,7 @@ class Str {
     }
 
     /**
-     * Returns the portion of string specified by the start and length parameters.
+     * Returns the portion of string specified by the start and length parameters..
      *
      * @param string   $string
      * @param int      $start
@@ -63,7 +66,7 @@ class Str {
     }
 
     /**
-     * @param string $str
+     * @param string $str .
      * @param int    $limit
      * @param string $end
      *
@@ -71,14 +74,14 @@ class Str {
      */
     public static function limit(string $str, int $limit = 30, string $end = '...'): string
     {
-        if ( strlen($str) <= $limit ) {
+        if (strlen($str) <= $limit) {
             return $str;
         }
         return self::substr($str, 0, $limit) . $end;
     }
 
     /**
-     * Upper case for each word start letters
+     * Upper case for each word start letters.
      *
      * @param string $str
      *
@@ -90,7 +93,7 @@ class Str {
     }
 
     /**
-     * Generate random string
+     * Generate random string.
      *
      * @param int $limit
      *
@@ -100,5 +103,4 @@ class Str {
     {
         return Generate::randomString($limit);
     }
-
 }

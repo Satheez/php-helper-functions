@@ -10,10 +10,11 @@
 namespace Sa\Helper;
 
 
-class Generate {
+class Generate
+{
 
     /**
-     * Generate random int
+     * Generate random int.
      *
      * @param int $minValue
      * @param int $maxValue
@@ -26,7 +27,7 @@ class Generate {
     }
 
     /**
-     * Generate random float
+     * Generate random float.
      *
      * @param float $minValue
      * @param float $maxValue
@@ -46,7 +47,7 @@ class Generate {
     }
 
     /**
-     * Generate random string
+     * Generate random string.
      *
      * @param int  $length
      * @param bool $includeNumbers
@@ -59,13 +60,13 @@ class Generate {
         $range = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         // Include numbers
-        if ( $includeNumbers ) {
+        if ($includeNumbers) {
 
             $range .= "0123456789";
         }
 
         // Include symbols
-        if ( $includeSymbols ) {
+        if ($includeSymbols) {
 
             $range .= "_!@#$^~";
         }
@@ -74,7 +75,7 @@ class Generate {
 
         $srtLen = strlen($range);
 
-        for ( $i = 0; $i < $length; $i++ ) {
+        for ($i = 0; $i < $length; $i++) {
             $randomIndex = rand(0, $srtLen - 1);
 
             $finalString .= $range[$randomIndex];
@@ -82,5 +83,4 @@ class Generate {
 
         return $finalString;
     }
-
 }

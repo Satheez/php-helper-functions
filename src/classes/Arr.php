@@ -3,16 +3,19 @@
  * Helper class that provides useful php functions.
  *
  * @author      Vettivel Satheez <isatheez@gmail.com>
+ *
  * @link        https://github.com/satheez
+ *
  * @license     MIT
  */
 
 namespace Sa\Helper;
 
-class Arr {
+class Arr
+{
 
     /**
-     * Add new element to the array
+     * Add new element to the array.
      *
      * @param array       $arr
      * @param             $value
@@ -22,7 +25,7 @@ class Arr {
      */
     public static function add(array $arr, string $key, $value)
     {
-        if ( !empty($key) ) {
+        if (!empty($key)) {
             $arr[$key] = $value;
         } else {
             $arr[] = $value;
@@ -32,7 +35,7 @@ class Arr {
     }
 
     /**
-     * Add new element to the array
+     * Add new element to the array.
      *
      * @param array       $arr
      * @param string|null $key
@@ -46,7 +49,7 @@ class Arr {
     }
 
     /**
-     * Pick first item from the array
+     * Pick first item from the array.
      *
      * @param array $arr
      * @param null  $default
@@ -56,11 +59,12 @@ class Arr {
     public static function first(array $arr, $default = null)
     {
         $firstIndex = 0;
+
         return self::nthElement($arr, $firstIndex, $default);
     }
 
     /**
-     * Pick last item from the array
+     * Pick last item from the array.
      *
      * @param array $arr
      * @param null  $default
@@ -74,7 +78,7 @@ class Arr {
     }
 
     /**
-     * Pick nth item from array
+     * Pick nth item from array.
      *
      * @param array $arr
      * @param int   $index
@@ -85,11 +89,12 @@ class Arr {
     public static function nthElement(array $arr, int $index, $default = null)
     {
         $key = array_keys($arr)[$index];
+
         return (count($arr) > 0 && isset($arr[$key])) ? $arr[$key] : $default;
     }
 
     /**
-     * Shuffle an array
+     * Shuffle an array.
      *
      * @param array $arr
      *
@@ -101,14 +106,14 @@ class Arr {
         $keys = array_keys($arr);
         shuffle($keys);
         $random = [];
-        foreach ( $keys as $key ) {
+        foreach ($keys as $key) {
             $random[$key] = $arr[$key];
         }
         $arr = $random;
     }
 
     /**
-     * Split array into given sizes
+     * Split array into given sizes.
      *
      * @param array $arr
      * @param int   $into
@@ -121,7 +126,7 @@ class Arr {
     }
 
     /**
-     * Select array element randomly
+     * Select array element randomly.
      *
      * @param array $arr
      *
@@ -134,7 +139,7 @@ class Arr {
     }
 
     /**
-     * Compare two arrays
+     * Compare two arrays.
      *
      * @param array $arr1
      * @param array $arr2
@@ -147,7 +152,7 @@ class Arr {
     }
 
     /**
-     * Get array common values
+     * Get array common values.
      *
      * @param array $arr1
      * @param array $arr2
@@ -160,7 +165,7 @@ class Arr {
     }
 
     /**
-     * Get array difference
+     * Get array difference.
      *
      * @param array $arr1
      * @param array $arr2
@@ -174,7 +179,7 @@ class Arr {
     }
 
     /**
-     * Merge array
+     * Merge array.
      *
      * @param array $arr1
      * @param array $arr2
@@ -187,7 +192,7 @@ class Arr {
     }
 
     /**
-     * Sort array by value
+     * Sort array by value.
      *
      * @param array $arr
      * @param bool  $isAscendingOrder
@@ -200,7 +205,7 @@ class Arr {
     }
 
     /**
-     * Sort array by key
+     * Sort array by key.
      *
      * @param array $arr
      * @param bool  $isAscendingOrder
@@ -209,7 +214,7 @@ class Arr {
      */
     public static function sortByKey(array &$arr, bool $isAscendingOrder = true): void
     {
-        if ( $isAscendingOrder ) {
+        if ($isAscendingOrder) {
             ksort($arr);
         } else {
             krsort($arr);
@@ -217,7 +222,7 @@ class Arr {
     }
 
     /**
-     * Sort array by value
+     * Sort array by value.
      *
      * @param array $arr
      * @param bool  $isAscendingOrder
@@ -226,7 +231,7 @@ class Arr {
      */
     public static function sortByValue(array &$arr, bool $isAscendingOrder = true): void
     {
-        if ( $isAscendingOrder ) {
+        if ($isAscendingOrder) {
             asort($arr);
         } else {
             arsort($arr);
@@ -234,7 +239,7 @@ class Arr {
     }
 
     /**
-     * Reverse array
+     * Reverse array.
      *
      * @param array $arr
      */
@@ -244,7 +249,7 @@ class Arr {
     }
 
     /**
-     * Pull element by key
+     * Pull element by key.
      *
      * @param array  $arr
      * @param string $key
@@ -255,7 +260,7 @@ class Arr {
     {
         $val = null;
 
-        if ( isset($arr[$key]) ) {
+        if (isset($arr[$key])) {
             $val = $arr[$key];
             unset($arr[$key]);
         }
@@ -264,7 +269,7 @@ class Arr {
     }
 
     /**
-     * Remove element by value
+     * Remove element by value.
      *
      * @param array $arr
      * @param       $value
@@ -274,13 +279,13 @@ class Arr {
     public static function removeByValue(array &$arr, $value): void
     {
         $key = self::getKeyByValue($arr, $value);
-        if ( !empty($key) ) {
+        if (!empty($key)) {
             unset($arr[$key]);
         }
     }
 
     /**
-     * Remove element key by value
+     * Remove element key by value.
      *
      * @param array $arr
      * @param       $value
@@ -290,14 +295,14 @@ class Arr {
      */
     public static function getKeyByValue(array $arr, $value)
     {
-        if ( ($key = array_search($value, $arr)) !== false ) {
+        if (($key = array_search($value, $arr)) !== false) {
             return $key;
         }
         return null;
     }
 
     /**
-     * Convert array to object
+     * Convert array to object.
      *
      * @param $array
      *
@@ -308,5 +313,4 @@ class Arr {
         $result = json_decode(json_encode($array), false);
         return is_object($result) ? $result : null;
     }
-
 }
