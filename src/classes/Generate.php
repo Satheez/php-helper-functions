@@ -3,16 +3,16 @@
  * Helper class that provides useful php functions.
  *
  * @author      Vettivel Satheez <isatheez@gmail.com>
+ *
  * @link        https://github.com/satheez
+ *
  * @license     MIT
  */
 
 namespace Sa\Helper;
 
-
 class Generate
 {
-
     /**
      * Generate random int.
      *
@@ -57,21 +57,19 @@ class Generate
      */
     public static function randomString(int $length = 10, bool $includeNumbers = true, bool $includeSymbols = false): string
     {
-        $range = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $range = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
         // Include numbers
         if ($includeNumbers) {
-
-            $range .= "0123456789";
+            $range .= '0123456789';
         }
 
         // Include symbols
         if ($includeSymbols) {
-
-            $range .= "_!@#$^~";
+            $range .= '_!@#$^~';
         }
 
-        $finalString = "";
+        $finalString = '';
 
         $srtLen = strlen($range);
 
