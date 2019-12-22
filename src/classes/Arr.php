@@ -38,7 +38,7 @@ class Arr
      *
      * @param array       $arr
      * @param string|null $key
-     * @param null        $default
+     * @param mixed|null  $default
      *
      * @return array
      */
@@ -50,8 +50,8 @@ class Arr
     /**
      * Pick first item from the array.
      *
-     * @param array $arr
-     * @param null  $default
+     * @param array      $arr
+     * @param mixed|null $default
      *
      * @return mixed|null
      */
@@ -65,8 +65,8 @@ class Arr
     /**
      * Pick last item from the array.
      *
-     * @param array $arr
-     * @param null  $default
+     * @param array      $arr
+     * @param mixed|null $default
      *
      * @return mixed|null
      */
@@ -80,9 +80,9 @@ class Arr
     /**
      * Pick nth item from array.
      *
-     * @param array $arr
-     * @param int   $index
-     * @param null  $default
+     * @param array      $arr
+     * @param int        $index
+     * @param mixed|null $default
      *
      * @return mixed|null
      */
