@@ -41,7 +41,7 @@ class Generate
         // Decimal place can be from 1 to 5
         $decimalPlace = ($decimalPlace > 0 && $decimalPlace <= 5) ? $decimalPlace : 1;
 
-        $divider = pow(10, $decimalPlace);
+        $divider = (int) pow(10, $decimalPlace);
 
         return rand(($minValue * $divider), ($maxValue * $divider)) / $divider;
     }
