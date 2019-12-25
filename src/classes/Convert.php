@@ -9,8 +9,8 @@
  * @license     MIT
  */
 
-namespace Sa\Helper;
-
-class Convert
-{
-}
+//namespace Sa\Helper;
+//
+//class Convert
+//{
+//}
