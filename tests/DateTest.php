@@ -1,12 +1,10 @@
 <?php
 
-
 use PHPUnit\Framework\TestCase;
 use Sa\Helper\Date;
 
 class DateTest extends TestCase
 {
-
     /** @test */
     public function it_validates_the_date_prepare_by_week_and_year_function()
     {
@@ -85,7 +83,7 @@ class DateTest extends TestCase
             '2019' => false,
             '2020' => true,
         ];
-        foreach ($validate as $year => $isLeafYear){
+        foreach ($validate as $year => $isLeafYear) {
             $this->assertEquals(Date::isLeafYear($year), $isLeafYear);
         }
     }
