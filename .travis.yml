@@ -15,6 +15,9 @@ before_script:
 # Commands you want to run that will verify your build.
 script: vendor/bin/phpunit
 
+after_success:
+    - bash <(curl -s https://codecov.io/bash)
+
 # Customize when the notification emails are sent.
 notifications:
   on_success: never
