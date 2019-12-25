@@ -25,6 +25,8 @@ jobs:
             sudo apt-get update
             sudo apt-get install jpegoptim, pngquant, gifsicle, optipng, libjpeg-progs, webp
             sudo npm install -g svgo
+            sudo apt-add-repository -r ppa:armagetronad-dev/ppa
+            sudo apt update -q
       -   name: Cache dependencies
           uses: actions/cache@v1
           with:
