@@ -12,7 +12,7 @@
     "type": "library",
     "require": {
         "php": "^7.2|^8",
-        "fzaninotto/faker": "^1.9",
+        "fakerphp/faker": "^1.9.1",
         "ext-json": "*",
         "ext-mbstring": "*"
     },
